@@ -38,8 +38,10 @@ class PPL:
         use_niched_selection = \
             (self._gen_num < get_hp("num_niched_select_gens"))
         if use_niched_selection:
+            logging.info(f"Using niched selection for gen {self._gen_num}")
             parents = niched_selection(self._pop, self._default_actions)
         else:
+            logging.info(f"Using standard selection for gen {self._gen_num}")
             parents = standard_selection(self._pop)
 
         offspring = niched_crossover(parents, self._default_actions,
